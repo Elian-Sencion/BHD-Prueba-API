@@ -1,0 +1,35 @@
+Diagrama de Arquitectura de la API RESTful de Usuarios
+------------------------------------------------------
+
+[ Cliente (Postman / Swagger UI) ]
+                │
+                ▼
+    [ UsersController (API REST) ]
+                │
+     ┌──────────┼────────────┐
+     ▼                        ▼
+[ Regex Validator ]      [ JwtHelper ]
+     │                        │
+     ▼                        ▼
+[ Validaciones ]      [ Generación de Token JWT ]
+                │
+                ▼
+       [ AppDbContext (EF Core) ]
+                │
+                ▼
+        [ SQL Server (UserApiDB) ]
+
+Entidades principales:
+  - User (Id, Email, Password, Token, IsActive, etc.)
+  - Phone (Number, CityCode, CountryCode, UserId)
+
+DTO:
+  - CreateUserRequest
+  - UserResponse
+
+Tecnologías:
+  - ASP.NET Core 8
+  - Entity Framework Core
+  - SQL Server Express
+  - JWT Bearer Authentication
+  - Swagger para documentación
